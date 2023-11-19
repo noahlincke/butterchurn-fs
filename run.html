@@ -224,6 +224,14 @@
           console.log('Error getting audio stream from getUserMedia');
         });
       });
+	
+      $('#canvas').on('click', function(){
+	  if (document.fullscreenElement) {
+	    document.exitFullscreen();
+	  } else {
+	    $('#canvas').get(0).requestFullscreen();
+	  }
+	});
 
       function initPlayer() {
         audioContext = new AudioContext();
@@ -248,8 +256,8 @@
         }
 
         visualizer = butterchurn.default.createVisualizer(audioContext, canvas , {
-          width: 800,
-          height: 600,
+          width: 1920,
+          height: 1080,
           pixelRatio: window.devicePixelRatio || 1,
           textureRatio: 1,
         });
@@ -277,7 +285,7 @@
                   <input type="number" id="presetCycleLength"step="1" value="15" min="1"></input></div>
       <div>Random: <input type="checkbox" id="presetRandom" checked></input></div>
     </div>
-    <canvas id='canvas' width='800' height='600'>
+    <canvas id='canvas' width='1920' height='1080'>
     </canvas>
   </div>
 </body>
